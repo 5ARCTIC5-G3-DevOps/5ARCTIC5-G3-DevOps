@@ -68,5 +68,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>devops-docker</finalName>
     </build>
 </project>
