@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8083
-ADD target/spring-boot-docker.jar spring-boot-docker.jar
-ENTRYPOINT ["java","-jar","/spring-boot-docker.jar"]
+ADD target/devops-docker.jar devops-docker.jar
+ENTRYPOINT ["java","-jar","/devops-docker.jar"]
