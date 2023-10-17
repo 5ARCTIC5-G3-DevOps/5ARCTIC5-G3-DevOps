@@ -1,4 +1,5 @@
 FROM openjdk:11
-EXPOSE 8083
-ADD target/devops-docker.jar devops-docker.jar
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} devops-docker.jar
 ENTRYPOINT ["java","-jar","/devops-docker.jar"]
+EXPOSE 8083
