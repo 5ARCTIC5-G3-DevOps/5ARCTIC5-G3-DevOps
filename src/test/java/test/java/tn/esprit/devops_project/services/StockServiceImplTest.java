@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class StockServiceImplTest {
+class StockServiceImplTest {
     @Mock
     private StockRepository stockRepository;
 
@@ -31,7 +31,7 @@ public class StockServiceImplTest {
 
     @Test
     void testAddStock() {
-            Stock stock1 = new Stock(2L, "TV", null);
+            Stock stock1 = new Stock(2L, "TV",20,5, null);
            // stock2.setIdStock(2L);
 
             stockService.addStock(stock1);
@@ -43,7 +43,7 @@ public class StockServiceImplTest {
 
     @Test
     void testRetrieveStock() {
-        Stock stock2 = new Stock(3L, "Machines à laver", null);
+        Stock stock2 = new Stock(3L, "Machines à laver",15,5, null);
         //stock2.setIdStock(3L);
 
         when(stockRepository.findById(3L)).thenReturn(Optional.of(stock2));
@@ -59,9 +59,9 @@ public class StockServiceImplTest {
     void testRetrieveAllStock() {
         List<Stock> StockList = new ArrayList<>() {
             {
-                add(new Stock(1L,"mmm",null));
-                add(new Stock(2L,"sss",null));
-                add(new Stock(3L,"www",null));
+                add(new Stock(1L,"mmm",10,3,null));
+                add(new Stock(2L,"sss",12,2,null));
+                add(new Stock(3L,"www",12,6,null));
             }};
 
         when(stockService.retrieveAllStock()).thenReturn(StockList);
