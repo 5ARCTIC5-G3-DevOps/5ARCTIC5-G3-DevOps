@@ -35,9 +35,9 @@ public class InvoiceDetailServiceImplTest {
     void testRetrieveAllInvoiceDetails() {
         List<InvoiceDetail> invoiceDetailList = new ArrayList<>() {
             {
-                add(new InvoiceDetail(1L, 15, 16F));
-                add(new InvoiceDetail(2L, 16, 17F));
-                add(new InvoiceDetail(3L, 17, 18F));
+                add(new InvoiceDetail(1L, 15, 16F,null,null));
+                add(new InvoiceDetail(2L, 16, 17F,null,null));
+                add(new InvoiceDetail(3L, 17, 18F,null,null));
 
             }
         };
@@ -52,7 +52,7 @@ public class InvoiceDetailServiceImplTest {
     @Test
     void testGetInvoiceDetail() {
         // Arrange
-        InvoiceDetail invoiceDetail = new InvoiceDetail(4L, 15, 16F);
+        InvoiceDetail invoiceDetail = new InvoiceDetail(4L, 15, 16F,null,null);
         when(invoiceDetailRepository.findById(invoiceDetail.getIdInvoiceDetail())).thenReturn(Optional.of(invoiceDetail));
 
         // Act
@@ -78,7 +78,7 @@ public class InvoiceDetailServiceImplTest {
     @Test
     void testAddInvoiceDetail() {
         // Arrange
-        InvoiceDetail invoiceDetail = new InvoiceDetail(5L, 5, 10.0F); // Create a sample InvoiceDetail
+        InvoiceDetail invoiceDetail = new InvoiceDetail(5L, 5, 10.0F,null,null); // Create a sample InvoiceDetail
 
         // Mock the behavior of the invoiceDetailRepository to return the saved InvoiceDetail
         when(invoiceDetailRepository.save(invoiceDetail)).thenReturn(invoiceDetail);

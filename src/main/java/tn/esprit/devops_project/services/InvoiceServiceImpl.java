@@ -13,6 +13,7 @@ import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.repositories.SupplierRepository;
 import tn.esprit.devops_project.services.Iservices.IInvoiceService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,13 +22,13 @@ import java.util.List;
 @AllArgsConstructor
 public class InvoiceServiceImpl implements IInvoiceService {
     @InjectMocks
-	final InvoiceRepository invoiceRepository;
+	 InvoiceRepository invoiceRepository;
 	@InjectMocks
-	final OperatorRepository operatorRepository;
+	 OperatorRepository operatorRepository;
 	@InjectMocks
-	final InvoiceDetailRepository invoiceDetailRepository;
+	 InvoiceDetailRepository invoiceDetailRepository;
 	@InjectMocks
-	final SupplierRepository supplierRepository;
+	 SupplierRepository supplierRepository;
 	
 	@Override
 	public List<Invoice> retrieveAllInvoices() {
@@ -52,8 +53,9 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public List<Invoice> getInvoicesBySupplier(Long idSupplier) {
 		Supplier supplier = supplierRepository.findById(idSupplier).orElseThrow(() -> new NullPointerException("Supplier not found"));
-		return (List<Invoice>) supplier.getInvoices();
+        return new ArrayList<>(supplier.getInvoices());
 	}
+
 
 	@Override
 	public void assignOperatorToInvoice(Long idOperator, Long idInvoice) {

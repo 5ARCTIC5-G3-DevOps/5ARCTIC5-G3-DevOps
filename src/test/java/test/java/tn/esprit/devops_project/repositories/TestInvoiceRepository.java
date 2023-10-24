@@ -34,7 +34,7 @@ public class TestInvoiceRepository {
 
     @BeforeEach
     public void setUp() throws ParseException {
-        Invoice testInvoice=new  Invoice(20L, 12F, 15F, dateFormat.parse("2023-08-08"), dateFormat.parse("2023-09-09"), false);
+        Invoice testInvoice=new  Invoice(20L, 12F, 15F, dateFormat.parse("2023-08-08"), dateFormat.parse("2023-09-09"), false,null,null);
     }
 
     @AfterEach

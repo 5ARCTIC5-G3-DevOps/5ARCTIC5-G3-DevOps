@@ -30,6 +30,5 @@ public class InvoiceDetail implements Serializable {
 	@JsonIgnore
 	Invoice invoice;
 
-	public InvoiceDetail(long l, int i, float v) {
-	}
+
 }
