@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Null;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -37,7 +37,7 @@ public class Invoice implements Serializable {
 	Date dateLastModificationInvoice;
 	Boolean archived;
 	@OneToMany(mappedBy = "invoice")
-	Set<InvoiceDetail> invoiceDetails;
+	private Set<InvoiceDetail> invoiceDetails;
     @ManyToOne
     @JsonIgnore
     Supplier supplier;

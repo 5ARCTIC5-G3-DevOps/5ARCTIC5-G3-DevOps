@@ -15,7 +15,6 @@ import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.repositories.SupplierRepository;
 import tn.esprit.devops_project.services.InvoiceServiceImpl;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -30,7 +29,7 @@ import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 
-public class InvoiceServiceImplTest {
+ class InvoiceServiceImplTest {
     @Mock
     private InvoiceRepository invoiceRepository;
     @Mock
@@ -104,7 +103,7 @@ public class InvoiceServiceImplTest {
     @Test
     void testRetrieveInvoice() throws ParseException {
         // Arrange
-        Long idInvoice=6L;
+        //Long idInvoice=6L;
         Invoice invoice2 = new Invoice(6L, 12F, 15F, dateFormat.parse("2023-08-08"), dateFormat.parse("2023-09-09"), true,invoiceDetailSet,null);
 
         // Stub the behavior of the invoiceRepository to return invoice2 when findById is called with invoice2.getIdInvoice()
@@ -161,7 +160,7 @@ public class InvoiceServiceImplTest {
     void testAssignOperatorToInvoice()  throws ParseException {
         // Arrange
         Long idOperator = 1L;
-        Long idInvoice = 8L;
+       // Long idInvoice = 8L;
 
         Invoice invoice4=new Invoice(8L,12F,15F,dateFormat.parse("2023-08-08"),dateFormat.parse("2023-09-09"),true,invoiceDetailSet,null);
         Operator operator=new Operator(1L,"sahar","letaief","password",null);

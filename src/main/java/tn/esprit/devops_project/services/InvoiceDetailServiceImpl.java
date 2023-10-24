@@ -2,16 +2,13 @@ package tn.esprit.devops_project.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.devops_project.entities.Invoice;
 import tn.esprit.devops_project.entities.InvoiceDetail;
 import tn.esprit.devops_project.repositories.InvoiceDetailRepository;
 import tn.esprit.devops_project.repositories.InvoiceRepository;
 import tn.esprit.devops_project.services.Iservices.IInvoiceDetailService;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 @Service
 @Slf4j
@@ -45,14 +42,5 @@ public class InvoiceDetailServiceImpl implements IInvoiceDetailService {
         invoiceDetailRepository.deleteById(idInvoiceDetail);
     }
 
-    /*public Invoice addInvoiceDetailToInvoice(Long invoiceId, InvoiceDetail invoiceDetail) {
-        Invoice invoice = invoiceRepository.findById(invoiceId)
-                .orElseThrow(() -> new EntityNotFoundException("Invoice not found"));
-        invoiceDetail.setInvoice(invoice);
-        invoiceDetailRepository.save(invoiceDetail);
-        invoice.getInvoiceDetails().add(invoiceDetail);
-        invoiceRepository.save(invoice);
 
-        return invoice;
-    }*/
 }
