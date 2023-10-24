@@ -58,7 +58,7 @@ import static org.mockito.Mockito.*;
         // Verify that invoiceRepository method was called
         verify(invoiceDetailRepository, times(1)).findById(invoiceDetail.getIdInvoiceDetail());
 
-        when(invoiceDetailRepository.findById(invoiceDetail.getIdInvoiceDetail())).thenReturn(Optional.empty());
+       // when(invoiceDetailRepository.findById(invoiceDetail.getIdInvoiceDetail())).thenReturn(Optional.empty());
 
     }
 
