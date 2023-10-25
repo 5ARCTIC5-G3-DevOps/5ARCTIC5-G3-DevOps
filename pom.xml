@@ -98,6 +98,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>devops-docker</finalName>
+        <finalName>5ARCTIC5-G3-DevOps</finalName>
     </build>
 </project>
