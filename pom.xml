@@ -58,18 +58,7 @@
             <version>5.2.0</version>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>Nexus Repository</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>maven-snapshots</id>
-            <name>maven-snapshots</name>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -109,6 +98,18 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>5ARCTIC5-G3-DevOps</finalName>
+        <!-- <finalName>5ARCTIC5-G3-DevOps</finalName> -->
     </build>
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>maven-snapshots</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
