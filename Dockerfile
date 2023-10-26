@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8080
-ADD target/DEVOPS.jar DEVOPS.jar
-ENTRYPOINT ["java","-jar","/DEVOPS.jar"]
+ADD target/BACKEND.jar BACKEND.jar
+ENTRYPOINT ["java","-jar","/BACKEND.jar"]
