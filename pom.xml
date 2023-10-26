@@ -94,7 +94,7 @@
             </plugin>
 
         </plugins>
-        <finalName>devops-docker</finalName>
+      <!--  <finalName>devops-docker</finalName>-->
     </build>
     <distributionManagement>
         <repository>
