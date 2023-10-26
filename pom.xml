@@ -96,7 +96,7 @@
         </plugins>
 
     </build>
-    <distributionManagement>
+   <!-- <distributionManagement>
         <repository>
             <id>deploymentRepo</id>
             <name>Nexus Repository</name>
@@ -107,5 +107,12 @@
             <name>maven-snapshots</name>
             <url>http://localhost:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
+    </distributionManagement>-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
+
 </project>
