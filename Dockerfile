@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8082
-ADD target/*.jar 5ARCTIC6-G3-DevOps.jar
-ENTRYPOINT ["java","-jar","/5ARCTIC6-G3-DevOps.jar"]
+ADD target/*.jar devops.jar
+ENTRYPOINT ["java","-jar","/devops.jar"]
