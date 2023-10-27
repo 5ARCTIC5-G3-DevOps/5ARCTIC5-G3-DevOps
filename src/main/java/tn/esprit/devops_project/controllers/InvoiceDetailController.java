@@ -3,7 +3,7 @@ package tn.esprit.devops_project.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.devops_project.entities.InvoiceDetail;
-import tn.esprit.devops_project.services.InvoiceDetailServiceImpl;
+import tn.esprit.devops_project.services.Iservices.IInvoiceDetailService;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class InvoiceDetailController {
 
-    InvoiceDetailServiceImpl invoiceDetailService;
+    IInvoiceDetailService invoiceDetailService;
 
     @GetMapping("/invoicesDetail")
     public List<InvoiceDetail> getInvoicesDetail() {
