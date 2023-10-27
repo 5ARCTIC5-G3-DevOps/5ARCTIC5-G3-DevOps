@@ -46,7 +46,7 @@ public class ProductServiceImplTest {
         product.setCategory(ProductCategory.ELECTRONICS);
 
         Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
-        Mockito.when(productRepository.save(Mockito.any(Product.class)).thenReturn(product);
+        Mockito.when(productRepository.save(Mockito.any(Product.class))).thenReturn(product);
 
         Product savedProduct = productService.addProduct(product, 1L);
 
