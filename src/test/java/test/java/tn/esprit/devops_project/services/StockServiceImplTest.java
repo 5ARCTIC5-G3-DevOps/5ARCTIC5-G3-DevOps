@@ -31,12 +31,10 @@ class StockServiceImplTest {
     void testAddStock() {
             Stock stock1 = new Stock(2L, "TV",20,5, null);
            // stock2.setIdStock(2L);
-
             stockService.addStock(stock1);
             verify(stockRepository, times(1)).save(stock1);
             System.out.println(stock1);
             System.out.println(" Create is working correctly...!!");
-
     }
 
     @Test

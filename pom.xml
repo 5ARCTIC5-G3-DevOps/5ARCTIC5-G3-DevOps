@@ -98,7 +98,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <!-- <finalName>5ARCTIC5-G3-DevOps</finalName> -->
     </build>
     <distributionManagement>
        <repository>
