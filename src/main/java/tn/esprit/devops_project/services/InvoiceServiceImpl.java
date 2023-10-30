@@ -13,6 +13,7 @@ import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.repositories.SupplierRepository;
 import tn.esprit.devops_project.services.Iservices.IInvoiceService;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,13 +40,18 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoiceRepository.findAll();
 	}
 	@Override
+	@Transactional
+
 	public void cancelInvoice(Long invoiceId) {
 		// method 01
 		Invoice invoice = invoiceRepository.findById(invoiceId).orElseThrow(() -> new NullPointerException(getMessage()));
 		invoice.setArchived(true);
 		invoiceRepository.save(invoice);
+		if (!invoice.getArchived()) {
+			invoice.setArchived(true);
+		}
 		//method 02 ( JPQL)
-		invoiceRepository.updateInvoice(invoiceId);
+		//invoiceRepository.updateInvoice(invoiceId);
 	}
 
 	@Override

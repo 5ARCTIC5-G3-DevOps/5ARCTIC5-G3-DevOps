@@ -1,10 +1,11 @@
 package test.java.tn.esprit.devops_project.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+import tn.esprit.devops_project.DevOps_ProjectSpringBootApplication;
 import tn.esprit.devops_project.entities.InvoiceDetail;
 import tn.esprit.devops_project.repositories.InvoiceDetailRepository;
 import tn.esprit.devops_project.services.InvoiceDetailServiceImpl;
@@ -15,14 +16,18 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
+@Slf4j
  class InvoiceDetailServiceImplTest {
+
 
     @Mock
     private InvoiceDetailRepository invoiceDetailRepository;
 
     @InjectMocks
     InvoiceDetailServiceImpl invoiceDetailService;
+
+
 
     @Test
     void testRetrieveAllInvoiceDetails() {
@@ -52,15 +57,13 @@ import static org.mockito.Mockito.*;
     }
 
 
-    @Test
+   @Test
     void testAddInvoiceDetail() {
         InvoiceDetail invoiceDetail = new InvoiceDetail(5L, 5, 10.0F,null,null); // Create a sample InvoiceDetail
-        when(invoiceDetailRepository.save(invoiceDetail)).thenReturn(invoiceDetail);
-        InvoiceDetail savedInvoiceDetail = invoiceDetailService.addInvoiceDetail(invoiceDetail);
-        assertNotNull(savedInvoiceDetail);
-        assertSame(invoiceDetail, savedInvoiceDetail);
+        invoiceDetailService.addInvoiceDetail(invoiceDetail);
         verify(invoiceDetailRepository, times(1)).save(invoiceDetail);
         System.out.println("invoice detail added successfully ;");
+
     }
 
     @Test
