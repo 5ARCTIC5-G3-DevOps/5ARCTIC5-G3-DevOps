@@ -47,11 +47,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		Invoice invoice = invoiceRepository.findById(invoiceId).orElseThrow(() -> new NullPointerException(getMessage()));
 		invoice.setArchived(true);
 		invoiceRepository.save(invoice);
-		if (!invoice.getArchived()) {
-			invoice.setArchived(true);
-		}
-		//method 02 ( JPQL)
-		//invoiceRepository.updateInvoice(invoiceId);
+
 	}
 
 	@Override

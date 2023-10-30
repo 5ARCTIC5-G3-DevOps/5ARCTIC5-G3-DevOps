@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
 @ExtendWith(MockitoExtension.class)
 @Slf4j
-public class InvoiceDetailServiceImplTestJUnit {
+class InvoiceDetailServiceImplTestJUnit {
 
 
     @Autowired

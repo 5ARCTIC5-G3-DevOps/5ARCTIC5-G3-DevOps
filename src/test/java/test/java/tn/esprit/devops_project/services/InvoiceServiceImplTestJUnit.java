@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
 @Slf4j
-public class InvoiceServiceImplTestJUnit {
+ class InvoiceServiceImplTestJUnit {
     @Autowired
     InvoiceServiceImpl invoiceService;
     @Autowired
