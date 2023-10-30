@@ -29,7 +29,7 @@ class StockServiceImplTest {
     private StockServiceImpl stockService;
 
     @Test
-    void TestRetrieveStock() {
+    void testRetrieveStock() {
         Stock stock2 = new Stock(3L, "Machines à laver", null);
 
         when(stockRepository.findById(3L)).thenReturn(Optional.of(stock2));
@@ -50,7 +50,7 @@ class StockServiceImplTest {
     }
 
     @Test
-    void TestDeleteStock(){
+    void testDeleteStock(){
         Stock stock1 = new Stock(4L,"Cafitére",null);
 
         Mockito.lenient().when(stockRepository.findById(stock1.getIdStock())).thenReturn(Optional.of(stock1));
