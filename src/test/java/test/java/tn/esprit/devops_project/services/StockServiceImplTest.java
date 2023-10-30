@@ -1,72 +1,68 @@
 package test.java.tn.esprit.devops_project.services;
 
+
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import tn.esprit.devops_project.DevOps_ProjectSpringBootApplication;
 import tn.esprit.devops_project.entities.Stock;
 import tn.esprit.devops_project.repositories.StockRepository;
 import tn.esprit.devops_project.services.StockServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
 class StockServiceImplTest {
-    @Mock
+    @Autowired
     private StockRepository stockRepository;
 
-    @InjectMocks
+    @Autowired
     private StockServiceImpl stockService;
 
+    private Stock testStock;
+
+    @BeforeEach
+    public void setUp() {
+        testStock = new Stock(1L, "Test Stock", null);
+    }
+
+   @AfterEach
+    public void tearDown() {
+        stockRepository.deleteAll();
+    }
+
     @Test
+    @Order(0)
     void testAddStock() {
-            Stock stock1 = new Stock(2L, "TV",20,5, null);
-           // stock2.setIdStock(2L);
-            stockService.addStock(stock1);
-            verify(stockRepository, times(1)).save(stock1);
-            System.out.println(stock1);
-            System.out.println(" Create is working correctly...!!");
+        stockService.addStock(testStock);
+        assertNotNull(testStock.getIdStock());
+        log.info("Added Stock: {}", testStock);
     }
 
     @Test
-    void testRetrieveStock() {
-        Stock stock2 = new Stock(3L, "Machines à laver",15,5, null);
-        //stock2.setIdStock(3L);
-
-        when(stockRepository.findById(3L)).thenReturn(Optional.of(stock2));
-        stockService.retrieveStock(3L);
-        assertNotNull(stock2);
-
-        System.out.println("get ==> " + "id Stock: " +stock2.getIdStock()+ " & title: "+stock2.getTitle());
-        System.out.println(" Retrieve is working correctly...!!");
-
-    }
-
-    @Test
+    @Order(1)
     void testRetrieveAllStock() {
-        List<Stock> StockList = new ArrayList<>() {
+        List<Stock> stockList = new ArrayList<>() {
             {
-                add(new Stock(1L,"mmm",10,3,null));
-                add(new Stock(2L,"sss",12,2,null));
-                add(new Stock(3L,"www",12,6,null));
-            }};
-
-        when(stockService.retrieveAllStock()).thenReturn(StockList);
-        //test
-        List<Stock> sList = stockService.retrieveAllStock();
-        assertEquals(3, sList.size());
-        System.out.println(" Retrieve all is working correctly...!!");
-
+                add(new Stock(3L, "Stock 1", null));
+                add(new Stock(4L, "Stock 2", null));
+                add(new Stock(5L, "Stock 3", null));
+                add(new Stock(6L, "Stock 4", null));
+            }
+        };
+        stockRepository.saveAll(stockList);
+        List<Stock> retrievedList = stockService.retrieveAllStock();
+        assertEquals(4, retrievedList.size());
+        log.info("Retrieved Stock List: {}", retrievedList);
     }
-
 
 }

@@ -29,5 +29,9 @@ public class StockController {
         return stockService.retrieveAllStock();
     }
 
+    @DeleteMapping("/stock/{stockId}")
+    public void removestock(@PathVariable Long stockId) {
+        stockService.deleteStock(stockId);
+    }
 
 }
