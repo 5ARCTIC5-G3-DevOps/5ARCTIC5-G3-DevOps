@@ -39,14 +39,14 @@ class StockServiceImplTestJUnit {
         stockRepository.deleteAll();
     }
 
-    //@Test
+    @Test
     void testAddStock() {
         stockService.addStock(testStock);
         //assertNotNull(testStock.getIdStock());
         log.info("Added Stock: {}", testStock);
     }
 
-    //@Test
+    @Test
     void testRetrieveAllStock() {
         List<Stock> stockList = new ArrayList<>() {
             {
