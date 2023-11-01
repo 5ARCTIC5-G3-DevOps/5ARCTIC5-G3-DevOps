@@ -2,8 +2,10 @@ package test.java.tn.esprit.devops_project.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.devops_project.DevOps_ProjectSpringBootApplication;
 import tn.esprit.devops_project.entities.InvoiceDetail;
@@ -16,7 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
+@ExtendWith(MockitoExtension.class)
 @Slf4j
  class InvoiceDetailServiceImplTest {
 
