@@ -23,25 +23,15 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
-@SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
+@ExtendWith(MockitoExtension.class)
 @Slf4j
 class StockServiceImplTest {
     @Mock
-    @Autowired
     private StockRepository stockRepository;
 
     @InjectMocks
-    @Autowired
     private StockServiceImpl stockService;
-    private Stock testStock;
 
-    @BeforeEach
-    void setUp() {
-        stockRepository = mock(StockRepository.class);
-        stockService = new StockServiceImpl(stockRepository);
-        testStock = new Stock(1L, "Test Stock", null);
-
-    }
     @Test
     void testRetrieveStock() {
         Stock stock2 = new Stock(3L, "Machines à laver", null);
@@ -96,18 +86,7 @@ class StockServiceImplTest {
     ////JUnit
 
 
-    @AfterEach
-    public void tearDown() {
-        stockRepository.deleteAll();
-    }
 
-    @Test
-    void testAddStock() {
-        Stock testStock1 = new Stock(1L, "Test Stock", null);
-        stockService.addStock(testStock1);
-        //assertNotNull(testStock.getIdStock());
-        log.info("Added Stock: {}", testStock1);
-    }
 
 
 

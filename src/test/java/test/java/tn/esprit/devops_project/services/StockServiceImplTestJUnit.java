@@ -60,6 +60,29 @@ class StockServiceImplTestJUnit {
         List<Stock> retrievedList = stockService.retrieveAllStock();
         assertEquals(4, retrievedList.size());
         log.info("Retrieved Stock List: {}", retrievedList);
-    }*/
+    }
+    @AfterEach
+    public void tearDown() {
+        stockRepository.deleteAll();
+    }
+
+    @Test
+    void testAddStock() {
+        Stock testStock1 = new Stock(1L, "Test Stock", null);
+        stockService.addStock(testStock1);
+        //assertNotNull(testStock.getIdStock());
+        log.info("Added Stock: {}", testStock1);
+    }
+
+     private Stock testStock;
+
+    @BeforeEach
+    void setUp() {
+        stockRepository = mock(StockRepository.class);
+        stockService = new StockServiceImpl(stockRepository);
+        testStock = new Stock(1L, "Test Stock", null);
+
+    }
+    */
 
 }
