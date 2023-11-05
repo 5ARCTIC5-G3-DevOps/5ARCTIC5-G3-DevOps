@@ -33,10 +33,10 @@ class InvoiceDetailServiceImplTestJUnit {
 
    }
 
-  /*@AfterAll
+  @AfterEach
    void tearDown(){
         invoiceDetailRepository.deleteAll();
-   }*/
+   }
 
 
     @Test

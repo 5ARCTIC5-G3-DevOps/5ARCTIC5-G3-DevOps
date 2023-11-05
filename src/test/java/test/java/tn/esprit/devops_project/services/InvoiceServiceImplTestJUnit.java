@@ -1,6 +1,7 @@
 package test.java.tn.esprit.devops_project.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ import static org.mockito.Mockito.*;
     private Invoice invoice;
     @BeforeEach
     void setUp() throws ParseException {
-         invoice = new Invoice(5L, 26F, 333F, dateFormat.parse("2023-10-09"), dateFormat.parse("2023-10-13"), false, null, null);
+         invoice = new Invoice(6L, 26F, 333F, dateFormat.parse("2023-10-09"), dateFormat.parse("2023-10-13"), false, null, null);
 
     }
     @Test
@@ -39,6 +40,9 @@ import static org.mockito.Mockito.*;
         log.info(invoice.getArchived().toString());
 
     }
-
+    @AfterEach
+    void tearDown(){
+        invoiceRepository.deleteAll();
+    }
 
 }
