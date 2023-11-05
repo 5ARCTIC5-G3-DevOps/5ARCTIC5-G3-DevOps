@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Slf4j
 @SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class)
 class StockServiceImplTestJUnit {
-   /* @Autowired
+    @Autowired
     private StockRepository stockRepository;
 
     @Autowired
@@ -42,7 +42,7 @@ class StockServiceImplTestJUnit {
     @Test
     void testAddStock() {
         stockService.addStock(testStock);
-        //assertNotNull(testStock.getIdStock());
+        assertNotNull(testStock.getIdStock());
         log.info("Added Stock: {}", testStock);
     }
 
@@ -61,28 +61,9 @@ class StockServiceImplTestJUnit {
         assertEquals(4, retrievedList.size());
         log.info("Retrieved Stock List: {}", retrievedList);
     }
-    @AfterEach
-    public void tearDown() {
-        stockRepository.deleteAll();
-    }
 
-    @Test
-    void testAddStock() {
-        Stock testStock1 = new Stock(1L, "Test Stock", null);
-        stockService.addStock(testStock1);
-        //assertNotNull(testStock.getIdStock());
-        log.info("Added Stock: {}", testStock1);
-    }
 
-     private Stock testStock;
 
-    @BeforeEach
-    void setUp() {
-        stockRepository = mock(StockRepository.class);
-        stockService = new StockServiceImpl(stockRepository);
-        testStock = new Stock(1L, "Test Stock", null);
 
-    }
-    */
 
 }
