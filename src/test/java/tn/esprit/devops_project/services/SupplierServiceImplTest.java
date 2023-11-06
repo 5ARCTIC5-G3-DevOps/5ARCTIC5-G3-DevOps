@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 class SupplierServiceImplTest {
 
@@ -31,8 +32,8 @@ class SupplierServiceImplTest {
    @Mock
     private SupplierRepository supplierRepository;
 
-
-
+    @Autowired
+    private SupplierServiceImpl supplierServices;
     @BeforeEach
     void setUp() {
         supplierRepository = mock(SupplierRepository.class);
@@ -60,8 +61,9 @@ class SupplierServiceImplTest {
         supplier.setCode("supplier@example.com");
         //supplier.setIdSupplier(10L);
         supplier.setSupplierCategory(SupplierCategory.ORDINAIRE);
-
-        Supplier savedsup = supplierService.addSupplier(supplier);
+        supplier.setCode("code");
+        supplierServices.addSupplier(supplier);
+        Supplier savedsup = supplierServices.addSupplier(supplier);
 
         assertNotNull(savedsup);
 
@@ -69,8 +71,9 @@ class SupplierServiceImplTest {
 
 
     @Test
+    @Order(1)
     void retrieveSupplier() {
-        Supplier supp = supplierService.retrieveSupplier(1L);
+        Supplier supp = supplierServices.retrieveSupplier(1L);
 
 
 
@@ -112,7 +115,7 @@ class SupplierServiceImplTest {
     @Order(1)
     @Test
     void updateSupplier() {
-        Supplier supp = supplierService.retrieveSupplier(1L);
+        Supplier supp = supplierServices.retrieveSupplier(1L);
         supp.setCode("update");
         supplierService.updateSupplier(supp);
     }
