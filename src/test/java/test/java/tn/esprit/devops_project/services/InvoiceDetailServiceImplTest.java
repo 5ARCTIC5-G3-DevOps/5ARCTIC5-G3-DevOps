@@ -47,6 +47,8 @@ import static org.mockito.Mockito.*;
         assertEquals(3, invoiceDetailListTest.size());
         System.out.println("Retrieve all invoices details is working correctly...!!");
     }
+
+    
     @Test
     void testGetInvoiceDetail() {
         InvoiceDetail invoiceDetail = new InvoiceDetail(4L, 15, 16F,null,null);
