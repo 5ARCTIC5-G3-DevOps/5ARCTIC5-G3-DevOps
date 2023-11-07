@@ -3,6 +3,7 @@ package test.java.tn.esprit.devops_project.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ class StockServiceImplTestJUnit {
     @Autowired
     private StockServiceImpl stockService;
 
-    private Stock testStock;
+    private Stock testStock,s;
 
     @BeforeEach
     public void setUp() {
@@ -41,8 +42,8 @@ class StockServiceImplTestJUnit {
 
     @Test
     void testAddStock() {
-        stockService.addStock(testStock);
-        assertNotNull(testStock.getIdStock());
+        testStock = stockService.addStock(testStock);
+        Assertions.assertNotNull(testStock.getIdStock());
         log.info("Added Stock: {}", testStock);
     }
 
