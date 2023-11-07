@@ -44,7 +44,7 @@ class StockServiceImplTestJUnit {
     void testAddStock() {
         s = stockService.addStock(testStock);
         Assertions.assertNotNull(s.getTitle());
-        log.info("Added Stock: {}", s);
+        log.info("Added Stock: {}", s.getIdStock() + " Title: " + s.getTitle());
     }
 
     @Test
