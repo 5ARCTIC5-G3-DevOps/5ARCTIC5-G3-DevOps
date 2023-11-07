@@ -27,7 +27,7 @@ class StockServiceImplTestJUnit {
     @Autowired
     private StockServiceImpl stockService;
 
-    private Stock testStock;
+    private Stock testStock,s;
 
     @BeforeEach
     public void setUp() {
@@ -39,11 +39,11 @@ class StockServiceImplTestJUnit {
         stockRepository.deleteAll();
     }
 
-    @Test
+     @Test
     void testAddStock() {
-        stockService.addStock(testStock);
-        //assertNotNull(testStock.getIdStock());
-        log.info("Added Stock: {}", testStock);
+        s = stockService.addStock(testStock);
+        Assertions.assertNotNull(s.getTitle());
+        log.info("Added Stock: {}", s.getIdStock() + " Title: " + s.getTitle());
     }
 
     @Test
