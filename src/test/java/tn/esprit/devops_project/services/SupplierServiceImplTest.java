@@ -89,13 +89,10 @@ class SupplierServiceImplTest {
         testsupplier.setCode("supplier@example.com");
 
 
-        // Configurez le mock pour qu'il renvoie le fournisseur factice lorsque findById est appelé avec l'ID 1L
         when(supplierRepository.findById(1L)).thenReturn(Optional.of(testsupplier));
 
-        // Appelez la méthode de récupération du fournisseur
         Supplier retrievedSupplier = supplierService.retrieveSupplier(1L);
 
-        // Vérifiez si le fournisseur renvoyé correspond au fournisseur factice
         assertEquals(testsupplier, retrievedSupplier);
 
 
@@ -103,12 +100,9 @@ class SupplierServiceImplTest {
 
     @Test
     void deleteSupplier() {
-        // Configurez le mock pour que la suppression du fournisseur réussisse
         doNothing().when(supplierRepository).deleteById(1L);
-        // Appelez la méthode de suppression du fournisseur
         supplierService.deleteSupplier(1L);
 
-        // Vérifiez que la méthode de suppression a été appelée avec le bon ID de fournisseur
         verify(supplierRepository).deleteById(1L);
     }
 
